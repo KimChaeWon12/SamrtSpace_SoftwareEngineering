@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+*.log
+*.class
+*.jar
+*.war
+build/
+target/
+.idea/
+.vscode/
+.gradle/
+out/
+node_modules/
+.env
