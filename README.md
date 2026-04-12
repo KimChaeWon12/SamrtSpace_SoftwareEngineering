@@ -1,39 +1,109 @@
-# SmartSpace
+1. 문서 개요
+1.1 목적
 
-AI + IoT 기반 공공 공간 혼잡도 관리 시스템
+본 형상관리 계획서는 개인 소프트웨어 프로젝트의 산출물에 대한
+식별, 변경통제, 버전관리, 기록유지 방법을 정의하는 것을 목적으로 한다.
 
-## 프로젝트 소개
-SmartSpace는 도서관, 공원, 카페, 코워킹 스페이스, 쇼핑몰 휴게 공간 등 다양한 공공 공간의 이용 현황과 혼잡도를 실시간으로 분석하여 사용자에게 제공하는 AI + IoT 기반 공간 관리 시스템입니다.
+1.2 적용 범위
 
-사용자는 웹/모바일 환경에서 주변 공공 공간의 혼잡도와 이용 가능 여부를 확인할 수 있고, 관리자는 공간 이용 데이터를 분석하여 공간 운영 효율을 높일 수 있습니다.
+요구사항 명세서
+설계서
+일정계획서
+테스트 계획서
+(코딩이 있을 경우) 소스코드
 
-## 주요 기능
-- 실시간 공간 이용 감지
-- AI 기반 혼잡도 분석 및 예측
-- 지도 기반 공간 탐색
-- 사용자 맞춤 공간 추천
-- 혼잡도 알림 기능
-- 공간 이용 데이터 통계 제공
+2. 형상 항목(Configuration Items)
 
-## 기술 스택
-- Backend: Spring Boot
-- Frontend: React 또는 HTML/CSS/JavaScript
-- Database: MySQL
-- AI: Python 기반 혼잡도 분석 모델
-- IoT: 인원 감지 센서, BLE/Wi-Fi 기반 센서, 카메라 분석 장치
-- Infra: AWS
+구분		형상 항목						파일 위치
+요구사항	과제1.프로젝트정의서				/docs/requirements
+		과제3.요구사항정의서				/docs/requirements
+		과제4.요구사항분석서				/docs/requirements
+설계		과젝5.소프트웨어설계서			/docs/design
+일정		과제2.프로젝트관리계획서			/docs/plan
+테스트	과제6.인스팩션예제				/docs/test
+		과제7.테스트결과서				/docs/test
+소스코드	소스코드						/src
 
-## 폴더 구조
-```text
-SmartSpace_GitHub_Repo/
-├─ README.md
-├─ .gitignore
-├─ docs/
-│  └─ system-definition.md
-└─ src/
-   ├─ main/
-   │  ├─ java/
-   │  └─ resources/
-   └─ test/
-      └─ java/
-```
+-> 모든 형상 항목은 Git 저장소에 등록한다.
+
+3. 형상 식별 방법
+3.1 버전 규칙: v주.부.수
+예) v1.0.0
+Major: 요구사항 변경
+Minor: 기능 추가
+Patch: 오타/경미 수정
+
+3.2 태그 전략
+기준선(Baseline)		설명
+requirements_freeze	요구사항 확정
+design_complete		설계 완료
+beta_release		시제품 완료
+final_release		최종 제출
+
+Git 명령 예: (Commit한 후) git tag requirements_freeze
+
+4. 변경 관리 절차
+4.1 변경 요청 절차
+
+변경 필요성 확인
+변경요청서 작성 (CR 문서)
+별도 브랜치 생성
+수정 작업
+main 브랜치 병합
+변경 이력 기록
+
+4.2 브랜치 전략
+main		-> 최종본 유지
+draft		-> 작업 중 문서
+review	-> 검토 단계
+experiment	-> 실험용 설계안
+
+브랜치 생성 예:
+	git branch draft
+	git checkout draft
+
+5. 형상 통제 방법
+
+모든 변경은 commit 메시지로 기록
+
+commit 메시지 형식:
+[구분자-번호] 변경 내용
+예: [CR-01] 요구사항 3번 수정 - 로그인 정책 변경
+
+구분자(prefix) 예시:
+[CR]    Change Request (변경 요청)
+[FEAT]  Feature (새 기능 추가)
+[FIX]   Bug Fix (오류 수정)
+[DOCS]  Documentation (문서 수정)
+
+※ 변경 요청(CR)이 있는 경우에는 CR 번호를 함께 기록한다.
+   예: [CR-01], [CR-02]
+
+** 한주 최소 1회 commit **
+
+6. 형상 상태 기록
+6.1 기록 도구
+
+git log
+git tag
+CHANGELOG.md 작성
+
+6.2 변경 기록 예
+v1.0.0 - 요구사항 확정
+v1.1.0 - 설계 구조 변경
+v1.1.1 - 오타 수정
+
+7. 형상 감사
+7.1 내부 점검 기준
+
+모든 산출물이 Git에 등록되어 있는가?
+태그가 단계별로 존재하는가?
+변경 사유가 commit 메시지에 기록되어 있는가?
+
+8. 백업 및 저장소 관리
+
+GitHub 원격 저장소 사용
+
+주 1회 push
+로컬 + 원격 이중 보관
+
